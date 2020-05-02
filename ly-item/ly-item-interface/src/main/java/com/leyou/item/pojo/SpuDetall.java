@@ -11,8 +11,8 @@ public class SpuDetall {
     @Id
     private Long spuId;
     private String description;
-    private String specialSpec;
     private String genericSpec;
+    private String specialSpec;
     private String packingList;
     private String afterService;
 

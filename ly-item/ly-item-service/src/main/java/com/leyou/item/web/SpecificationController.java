@@ -22,8 +22,12 @@ public class SpecificationController {
     }
 
     @GetMapping("params")
-    public ResponseEntity<List<SpecParam>> queryParamByGid(@RequestParam Long gid){
-        return ResponseEntity.ok(specService.queryParamByGid(gid));
+    public ResponseEntity<List<SpecParam>> queryParamByGid(
+            @RequestParam(value = "gid",required = false) Long gid,
+            @RequestParam(value = "cid",required = false) Long cid,
+            @RequestParam(value = "searching",required = false) Boolean searching
+    ){
+        return ResponseEntity.ok(specService.queryParamList(gid,cid,searching));
     }
 
 

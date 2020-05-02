@@ -43,4 +43,11 @@ public class BrandController {
         brandService.saveBrand(brand,cids);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @GetMapping("/cid/{cid}")
+    public ResponseEntity<List<Brand>> queryBrandByCid(@PathVariable Long cid){
+        return ResponseEntity.ok(brandService.queryBrandsByCid(cid));
+    }
+
+
 }

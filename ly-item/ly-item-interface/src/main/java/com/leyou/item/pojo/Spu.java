@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author sakura
@@ -37,5 +38,11 @@ public class Spu {
     private String canme;
     @Transient
     private String bname;
+
+    @Transient
+    private List<Sku> skus;
+
+    @Transient
+    private SpuDetall spuDetail;
 
 }
