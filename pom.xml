@@ -9,6 +9,7 @@
         <module>ly-gateway</module>
         <module>ly-common</module>
         <module>ly-upload</module>
+        <module>ly-searchh</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
