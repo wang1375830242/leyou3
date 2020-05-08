@@ -3,12 +3,17 @@ server:
 spring:
   application:
     name: search-service
-  main:
-    allow-bean-definition-overriding: true
+  jackson:
+    default-property-inclusion: non_null # 配置json处理时忽略空值
   data:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 192.168.86.133:9300
+  elasticsearch:
+    rest:
+      uris: ["http://192.168.86.133:9200"]
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:
