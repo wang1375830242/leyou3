@@ -1,6 +1,5 @@
 package com.leyou.item.pojo;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;
 

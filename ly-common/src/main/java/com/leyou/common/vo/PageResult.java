@@ -1,7 +1,9 @@
 package com.leyou.common.vo;
 
-import java.util.List;
+import lombok.Data;
 
+import java.util.List;
+@Data
 public class PageResult<T> {
     private Long total;// 总条数
     private int totalPage;// 总页数
@@ -21,36 +23,4 @@ public class PageResult<T> {
         this.items = items;
     }
 
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
-    public List<T> getItems() {
-        return items;
-    }
-
-    public void setItems(List<T> items) {
-        this.items = items;
-    }
-
-    public int getTotalPage() {
-        return totalPage;
-    }
-
-    public void setTotalPage(int totalPage) {
-        this.totalPage = totalPage;
-    }
-
-    @Override
-    public String toString() {
-        return "PageResult{" +
-                "total=" + total +
-                ", totalPage=" + totalPage +
-                ", items=" + items +
-                '}';
-    }
 }
