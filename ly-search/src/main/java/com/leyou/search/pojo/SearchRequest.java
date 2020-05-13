@@ -1,12 +1,25 @@
 package com.leyou.search.pojo;
 
+import java.util.Map;
+
 public class SearchRequest {
     private String key;// 搜索条件
 
     private Integer page;// 当前页
+    private String sortBy;//以此字段排序
+    private Boolean descending;//是否降序
+    private Map<String,String> filter;//过滤条件
 
-    private static final int DEFAULT_SIZE = 20;// 每页大小，不从页面接收，而是固定大小
-    private static final int DEFAULT_PAGE = 1;// 默认页
+    public Map<String, String> getFilter() {
+        return filter;
+    }
+
+    public void setFilter(Map<String, String> filter) {
+        this.filter = filter;
+    }
+
+    private static final Integer DEFAULT_SIZE = 20;// 每页大小，不从页面接收，而是固定大小
+    private static final Integer DEFAULT_PAGE = 1;// 默认页
 
     public String getKey() {
         return key;
@@ -28,7 +41,34 @@ public class SearchRequest {
         this.page = page;
     }
 
+    public String getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public Boolean getDescending() {
+        return descending;
+    }
+
+    public void setDescending(Boolean descending) {
+        this.descending = descending;
+    }
+
     public Integer getSize() {
         return DEFAULT_SIZE;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchRequest{" +
+                "key='" + key + '\'' +
+                ", page=" + page +
+                ", sortBy='" + sortBy + '\'' +
+                ", descending=" + descending +
+                ", filter=" + filter +
+                '}';
     }
 }

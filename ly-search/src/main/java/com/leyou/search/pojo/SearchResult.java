@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author admin
@@ -19,13 +20,17 @@ public class SearchResult extends PageResult<Goods> {
 
     private List<Brand> brands;
 
+    private List<Map<String, Object>> specs;
+
     public SearchResult() {
 
     }
 
-    public SearchResult(Long total, int totalPage, List<Goods> items, List<Category> categories, List<Brand> brands) {
+
+    public SearchResult(Long total, int totalPage, List<Goods> items, List<Category> categories, List<Brand> brands, List<Map<String, Object>> specs) {
         super(total, totalPage, items);
         this.categories = categories;
         this.brands = brands;
+        this.specs = specs;
     }
 }
