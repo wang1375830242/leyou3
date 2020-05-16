@@ -7,7 +7,6 @@ public class SearchRequest {
 
     private Integer page;// 当前页
     private String sortBy;//以此字段排序
-    private Boolean descending;//是否降序
     private Map<String,String> filter;//过滤条件
 
     public Map<String, String> getFilter() {
@@ -49,14 +48,6 @@ public class SearchRequest {
         this.sortBy = sortBy;
     }
 
-    public Boolean getDescending() {
-        return descending;
-    }
-
-    public void setDescending(Boolean descending) {
-        this.descending = descending;
-    }
-
     public Integer getSize() {
         return DEFAULT_SIZE;
     }
@@ -67,7 +58,6 @@ public class SearchRequest {
                 "key='" + key + '\'' +
                 ", page=" + page +
                 ", sortBy='" + sortBy + '\'' +
-                ", descending=" + descending +
                 ", filter=" + filter +
                 '}';
     }
