@@ -61,8 +61,6 @@ public class PageService {
         model.put("categories", categories);
         model.put("specs", specs);
 
-        System.out.println("model = " + model);
-
         return model;
     }
 
@@ -72,6 +70,11 @@ public class PageService {
         context.setVariables(loadModel(spuId));
         // 输出流
         File dest = new File("F:\\课程\\专2\\upload", spuId + ".html");
+
+        if (dest.exists()){
+            dest.delete();
+        }
+
         try (PrintWriter writer = new PrintWriter(dest, "UTF-8")) {
             // 生成HTML
             templateEngine.process("item", context, writer);
@@ -80,4 +83,10 @@ public class PageService {
         }
     }
 
+    public void deleteHtml(Long spuId) {
+        File dest = new File("F:\\课程\\专2\\upload", spuId + ".html");
+        if (dest.exists()){
+            dest.delete();
+        }
+    }
 }

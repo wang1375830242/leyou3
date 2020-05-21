@@ -20,6 +20,7 @@ zuul:
   routes:
     item-service: /item/**
     search-service: /search/**
+    user-service: /user/**
     upload-service:
       path: /upload/**
       servuceId: upload-service

@@ -8,10 +8,15 @@ spring:
   data:
     elasticsearch:
       cluster-name: elasticsearch
-      cluster-nodes: 192.168.86.133:9300
+      cluster-nodes: 192.168.78.129:9300
   elasticsearch:
     rest:
-      uris: ["http://192.168.86.133:9200"]
+      uris: ["http://192.168.78.129:9200"]
+  rabbitmq:
+    host: 127.0.0.1
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
   main:
     allow-bean-definition-overriding: true
 eureka:
