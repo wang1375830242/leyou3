@@ -9,11 +9,11 @@
         <module>ly-gateway</module>
         <module>ly-common</module>
         <module>ly-upload</module>
-        <module>ly-searchh</module>
+        <module>ly-search</module>
         <module>ly-page</module>
         <module>ly-sms</module>
         <module>ly-user</module>
-        <module>ly-user-interface</module>
+        <module>ly-auth</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

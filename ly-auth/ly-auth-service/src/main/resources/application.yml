@@ -1,0 +1,34 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: auth-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 10
+  instance:
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+leyou:
+  jwt:
+    secret: leyou@Login(Auth}*^31)&heiMa% # 登录校验的密钥
+    pubKeyPath: F:\课程\专3\tmp\rsa\\rsa.pub # 公钥地址
+    priKeyPath: F:\课程\专3\tmp\rsa\\rsa.pri # 私钥地址
+    expire: 30 # 过期时间,单位分钟
+    cookieName: LY_TOKEN
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/yun5?serverTimezone=UTC&useSSL=false
+#    username: root
+#    password: root
+#  #    driver-class-name: com.mysql.jdbc.Driver
+#  rabbitmq:
+#    host: 127.0.0.1
+#    username: leyou
+#    password: leyou
+#    virtual-host: /leyou
+#  redis:
+#    host: 127.0.0.1

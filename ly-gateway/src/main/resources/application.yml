@@ -21,10 +21,13 @@ zuul:
     item-service: /item/**
     search-service: /search/**
     user-service: /user/**
+    auth-service: /auth/**
     upload-service:
       path: /upload/**
       servuceId: upload-service
       strip-prefix: false
+  add-host-header: true
+  sensitive-headers:
 ribbon:
   ConnectTimeout: 1000 # 连接超时时间(ms)
   ReadTimeout: 3500 # 通信超时时间(ms)
@@ -38,3 +41,14 @@ hystrix:
         isolation:
           thread:
             timeoutInMillisecond: 5000 # 熔断超时时长：10000ms
+leyou:
+  jwt:
+    pubKeyPath: F:\课程\专3\tmp\rsa\\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item

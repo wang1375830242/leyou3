@@ -9,14 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.leyou.service</groupId>
-    <artifactId>ly-user</artifactId>
+    <groupId>com.leyou.auth</groupId>
+    <artifactId>ly-auth</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ly-user-interface</module>
-        <module>ly-user-service</module>
+        <module>ly-auth-common</module>
+        <module>ly-auth-service</module>
     </modules>
-
 
 
 </project>

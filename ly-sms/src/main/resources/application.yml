@@ -10,6 +10,15 @@ spring:
     virtual-host: /leyou
   redis:
     host: 127.0.0.1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+#    lease-renewal-interval-in-seconds: 5 # 5秒钟发送一次心跳
+#    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
 ly:
   sms:
     accessKeyId: LTAI4G7eTg68TaicznU2zNtu
