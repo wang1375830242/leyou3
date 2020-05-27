@@ -197,10 +197,10 @@
                             <div class="fl title">
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input autocomplete="off" type="text" disabled v-model="num" minnum="1"
+                                        <input autocomplete="off" type="text"  disabled v-model="num" minnum="1"
                                                class="itxt"/>
-                                        <a href="javascript:void(0)" class="increment plus" @click="increment">+</a>
-                                        <a href="javascript:void(0)" class="increment mins" @click="decrement">-</a>
+                                        <a href="javascript:void(0)" class="increment plus" @click="incr()">+</a>
+                                        <a href="javascript:void(0)" class="increment mins" @click="decr()">-</a>
                                     </div>
                                 </div>
                             </div>
@@ -641,17 +641,17 @@
             num: 1,
         },
         methods: {
-            decrement() {
+            decr() {
                 if (this.num > 1) {
                     this.num--;
                 }
             },
-            increment() {
+            incr() {
                 this.num++;
             },
             addCart() {
                 // 判断是否登录
-                ly.http.get("/auth/verify").then(() => {
+                ly.verify().then(res => {
                     // 已登录
                     ly.http.post("/cart", {
                         skuId: this.sku.id,
@@ -668,9 +668,9 @@
                     })
                 }).catch(() => {
                     // 获取以前的购物车
-                    const carts = ly.store.get("carts") || [];
+                    let carts = ly.store.get("LY_CART") || [];
                     // 获取与当前商品id一致的购物车数据
-                    const cart = carts.find(c => c.skuId === this.sku.id);
+                    let cart = carts.find(cart => cart.skuId === this.sku.id);
                     if (cart) {
                         // 存在，修改数量
                         cart.num += this.num;
@@ -686,7 +686,7 @@
                         })
                     }
                     // 未登录
-                    ly.store.set("carts", carts);
+                    ly.store.set("LY_CART", carts);
                     // 跳转到购物车列表页
                     window.location.href = "http://www.leyou.com/cart.html";
                 })

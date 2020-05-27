@@ -32,31 +32,46 @@ public class GoodsController {
     }
 
     @PostMapping("goods")
-    public ResponseEntity<Void> saveGoods(@RequestBody Spu spu){
+    public ResponseEntity<Void> saveGoods(@RequestBody Spu spu) {
         goodsService.saveGoods(spu);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("goods")
-    public ResponseEntity<Void> updateGoods(@RequestBody Spu spu){
+    public ResponseEntity<Void> updateGoods(@RequestBody Spu spu) {
         goodsService.updateGoods(spu);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping("/spu/detail/{id}")
-    public ResponseEntity<SpuDetall> queryDetailById(@PathVariable("id") Long spuId){
+    public ResponseEntity<SpuDetall> queryDetailById(@PathVariable("id") Long spuId) {
         return ResponseEntity.ok(goodsService.qyeryDetailById(spuId));
     }
 
     @GetMapping("sku/list")
-    public ResponseEntity<List<Sku>> querySkuBySpuId(@RequestParam("id") Long spuId){
+    public ResponseEntity<List<Sku>> querySkuBySpuId(@RequestParam("id") Long spuId) {
         return ResponseEntity.ok(goodsService.querySpuBySpuId(spuId));
 
     }
 
+    @GetMapping("sku/list/ids")
+    public ResponseEntity<List<Sku>> querySkuByIds(@RequestParam("ids") List<Long> ids) {
+        return ResponseEntity.ok(goodsService.querySkuByIds(ids));
+
+    }
+
     @GetMapping("spu/{id}")
-    public ResponseEntity<Spu> querySpuById(@PathVariable("id") Long id){
+    public ResponseEntity<Spu> querySpuById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(goodsService.querySpuById(id));
+    }
+
+    @GetMapping("sku/{skuId}")
+    public ResponseEntity<Sku> querySkuById(@PathVariable Long skuId) {
+        Sku sku = goodsService.querySkuById(skuId);
+        if (sku == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(sku);
     }
 
 }

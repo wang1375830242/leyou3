@@ -21,7 +21,7 @@ eureka:
 #    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
 ly:
   sms:
-    accessKeyId: LTAI4G7eTg68TaicznU2zNtu
-    accessKeySecret: 41PEsIAq4Im4Om77k6M6JF89EvOuMP
+    accessKeyId: LTAasdadTaicznU2zNtu
+    accessKeySecret: 4edwqdq4Im4Om77k6M6JF89EvOuMP
     signName: StudyDemo
     verifyCodeTemplate: SMS_190786405

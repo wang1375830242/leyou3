@@ -40,11 +40,9 @@ public class AuthController {
             return ResponseEntity.badRequest().build();
         }
         // 使用cookieUtils.setCookie方法，就可以把jwt类型的token设置给cookie
-        String cookieName = jwtProperties.getCookieName();
-        int expire = jwtProperties.getExpire();
-        CookieUtils.setCookie(request, response, cookieName, token, expire * 60);
-//        CookieUtils.setCookie(request, response, jwtProperties.getCookieName(), token,
-//                jwtProperties.getExpire(), "utf-8"); // 视频最后有true
+//        CookieUtils.setCookie(request,response,this.jwtProperties.getCookieName(),token,this.jwtProperties.getExpire()* 60);
+        CookieUtils.setCookie(request, response, jwtProperties.getCookieName(), token,
+                jwtProperties.getExpire(), "utf-8",true);
         return ResponseEntity.ok().build();
     }
 

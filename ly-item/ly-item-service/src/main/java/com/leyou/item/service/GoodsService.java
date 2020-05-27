@@ -163,13 +163,13 @@ public class GoodsService {
             throw new LyException(ExceptionEnum.GOODS_SKU_NOT_FOND);
         }
         //查询库存
-//        for (Sku s : skuList) {
-//            Stock stock = stockMapper.selectByPrimaryKey(sku.getId());
-//            if (stock == null){
-//                throw new LyException(ExceptionEnum.GOODS_STOCK_NOT_FOND);
-//            }
-//            s.setStock(stock.getStock());
-//        }
+/*        for (Sku s : skuList) {
+            Stock stock = stockMapper.selectByPrimaryKey(sku.getId());
+            if (stock == null){
+                throw new LyException(ExceptionEnum.GOODS_STOCK_NOT_FOND);
+            }
+            s.setStock(stock.getStock());
+        }*/
         List<Long> ids = skuList.stream().map(Sku::getId).collect(Collectors.toList());
         List<Stock> stockList = stockMapper.selectByIdList(ids);
         if (CollectionUtils.isEmpty(stockList)) {
@@ -233,5 +233,32 @@ public class GoodsService {
         // 查询deatil
         spu.setSpuDetail(qyeryDetailById(id));
         return spu;
+    }
+
+    public List<Sku> querySkuByIds(List<Long> ids) {
+        List<Sku> skus = skuMapper.selectByIdList(ids);
+        if (CollectionUtils.isEmpty(skus)){
+            throw new LyException(ExceptionEnum.GOODS_SKU_NOT_FOND);
+        }
+        loadStockInSku(ids, skus);
+
+        return skus;
+    }
+
+    private void loadStockInSku(List<Long> ids, List<Sku> skus) {
+        // 查看库存
+        List<Stock> stockList = stockMapper.selectByIdList(ids);
+        if (CollectionUtils.isEmpty(stockList)) {
+            throw new LyException(ExceptionEnum.GOODS_STOCK_NOT_FOND);
+        }
+
+        Map<Long, Integer> stockMap = stockList.stream().
+                collect(Collectors.toMap(Stock::getSkuId, Stock::getStock));
+
+        skus.forEach(s -> s.setStock(stockMap.get(s.getId())));
+    }
+
+    public Sku querySkuById(Long skuId) {
+        return skuMapper.selectByPrimaryKey(skuId);
     }
 }
