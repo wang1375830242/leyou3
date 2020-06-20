@@ -171,7 +171,6 @@ public class SearchService {
     }
 
     public PageResult<Goods> search(SearchRequest request) {
-        System.out.println("request = " + request);
         String key = request.getKey();
         if (StringUtils.isBlank(key)) {
             return null;

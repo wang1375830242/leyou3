@@ -68,10 +68,10 @@ public class UserService {
     public void register(User user, String code) {
         // 校验验证码
         String redisCode = redisTemplate.opsForValue().get(key_prefix + user.getPhone());
-        if (!StringUtils.equals(code, redisCode)) {
-            System.out.println("验证码不对");
-            return;
-        }
+//        if (!StringUtils.equals(code, redisCode)) {
+//            System.out.println("验证码不对");
+//            return;
+//        }
 
         // 生成随机码
         String salt = CodecUtils.generateSalt();
